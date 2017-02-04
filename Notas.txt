@@ -1,0 +1,30 @@
+comando: npm init
+
+Crea un nuevo proyecto
+
+entry point es el index
+
+Módulo: Express  en la versión ^4.14.0
+Body Parser
+package.json <-- fichero de dependencia .json
+
+
+'use strict' para poder usar nuevas caracteristicas
+de es5 y es6
+
+
+middleware
+
+nodemon recarga el servidor para evitar estar cerrando
+y abriendo la consola, revisando los cambios hechos en la api
+
+-D <- Dependencia de desarrollo
+
+--save se agrega al Proyecto
+
+ES6 usa funciones de tipo flecha: en lugar de usar
+function(){}
+se usa () =>{}
+
+
+En cada proyecto diferente se debe ejecutar npm install (Instala todos los módulos de node)
