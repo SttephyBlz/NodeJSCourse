@@ -23,12 +23,13 @@ function getFavorito(req, res){
     if(err){
       res.status(500).send({message: 'Error al devolver el marcador'});
     }
-
-    if(!favorito){
-      res.status(404).send({message: 'No hay marcador'});
+    else{
+      if(!favorito){
+        res.status(404).send({message: 'No hay marcador'});
+      }else{
+        res.status(200).send({favorito});
+      }
     }
-
-    res.status(200).send({favorito});
   });
 }
 
@@ -36,14 +37,13 @@ function getFavoritos(req, res){
   Favorito.find({}).sort('-_id').exec((err, favoritos) =>{
     if(err){
       res.status(500).send({message: 'Error al devolver los marcadores'});
+    }else{
+      if(!favoritos){
+        res.status(404).send({message: 'No hay marcadores'});
+      }else{
+        res.status(500).send({favoritos});
+      }
     }
-
-    if(!favoritos){
-      res.status(404).send({message: 'No hay marcadores'});
-    }
-
-    res.status(500).send({favoritos});
-
   });
 }
 
@@ -73,9 +73,9 @@ function updateFavorito(req, res){
     if(err){
       //Error 500: Error de servidor
       res.status(500).send({message: 'Error al actualizar el marcador'});
+    }else{
+      res.status(200).send({favorito: favoritoUpdated});
     }
-
-    res.status(200).send({favorito: favoritoUpdated});
   });
 }
 
@@ -98,11 +98,10 @@ function deleteFavorito(req, res){
         }else{
           res.status(200).send({message: 'El marcador se ha eliminado'});
         }
-      })
+      });
     }
-  })
+  });
 }
-
 
 module.exports = {
   prueba,
