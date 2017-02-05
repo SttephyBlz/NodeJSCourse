@@ -19,7 +19,17 @@ function prueba(req, res){
 function getFavorito(req, res){
   var favoritoId = req.params.id;
 
-  res.status(200).send({data: favoritoId});
+  Favorito.findById(favoritoId, function(err, favorito){
+    if(err){
+      res.status(500).send({message: 'Error al devolver el marcador'});
+    }
+
+    if(!favorito){
+      res.status(404).send({message: 'No hay marcador'});
+    }
+
+    res.status(200).send({favorito});
+  });
 }
 
 function getFavoritos(req, res){
