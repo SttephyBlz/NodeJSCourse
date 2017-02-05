@@ -69,8 +69,6 @@ function updateFavorito(req, res){
   var favoritoId = req.params.id;
   var update = req.body;
 
-  console.log(update);
-
   Favorito.findByIdAndUpdate(favoritoId, update, (err, favoritoUpdated) =>{
     if(err){
       //Error 500: Error de servidor
@@ -84,7 +82,25 @@ function updateFavorito(req, res){
 function deleteFavorito(req, res){
   var favoritoId = req.params.id;
 
-  res.status(200).send({delete: true, data: favoritoId});
+  Favorito.findById(favoritoId, function(err, favorito){
+    if(err){
+      //Error 500: Error de servidor
+      res.status(500).send({message: 'Error al devolver el marcador'});
+    }
+
+    if(!favorito){
+      res.status(404).send({message: 'No hay marcadores'});
+    }
+    else{
+      favorito.remove(err =>{
+        if(err){
+          res.status(500).send({message: 'El marcador al borrar'});
+        }else{
+          res.status(200).send({message: 'El marcador se ha eliminado'});
+        }
+      })
+    }
+  })
 }
 
 
