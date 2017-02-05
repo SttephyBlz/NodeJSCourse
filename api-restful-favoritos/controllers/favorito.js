@@ -23,7 +23,18 @@ function getFavorito(req, res){
 }
 
 function getFavoritos(req, res){
+  Favorito.find({}).sort('-_id').exec((err, favoritos) =>{
+    if(err){
+      res.status(500).send({message: 'Error al devolver los marcadores'});
+    }
 
+    if(!favoritos){
+      res.status(404).send({message: 'No hay marcadores'});
+    }
+
+    res.status(500).send({favoritos});
+
+  });
 }
 
 function saveFavorito(req, res){

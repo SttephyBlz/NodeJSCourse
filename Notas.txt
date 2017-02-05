@@ -28,3 +28,13 @@ se usa () =>{}
 
 
 En cada proyecto diferente se debe ejecutar npm install (Instala todos los módulos de node)
+
+Para iniciar MongoDB:
+sudo service mongodb start
+
+Para ejecutar MongoDB shell:
+start-mongo (enter)
+mongo
+
+Lo que hacen es guardar una coleccion de documentos
+y lo pluraliza automaticamente

@@ -11,6 +11,7 @@ api.get('/favorito/:id', FavoritoController.getFavorito);
 api.post('/favorito', FavoritoController.saveFavorito);
 api.put('/favorito', FavoritoController.updateFavorito);
 api.delete('/favorito/:id', FavoritoController.deleteFavorito);
+api.get('/favoritos', FavoritoController.getFavoritos);
 
 //Recibir parámetro por url: /prueba/:nombre, el cual lo hace obligatorio
 //En cambio si tiene un "?" al final lo pone opcional
